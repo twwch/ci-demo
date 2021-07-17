@@ -1,7 +1,7 @@
 image: maven:3.6.3-jdk-8
 
 variables:
-  MAVEN_CLI_OPTS: "-s /root/.m2/settings.xml --batch-mode"
+  MAVEN_CLI_OPTS: "-s /opt/apache-maven-3.8.1/conf/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=/root/.m2/repository"
 
 # 定义缓存
