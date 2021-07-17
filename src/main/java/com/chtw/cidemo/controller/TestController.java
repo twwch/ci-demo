@@ -16,6 +16,7 @@ public class TestController {
         Map<String, String> res = new HashMap<>();
         res.put("code", "0");
         res.put("msg", "server is ok");
+        res.put("data", "hello ci demo");
         return res;
     }
 }
