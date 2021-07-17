@@ -33,8 +33,6 @@ make_jar:
 make_image:
   image: docker:latest
   stage: build
-  tags:
-    - k8s
   script:
     - echo "从缓存中恢复的target文件夹" `ls target/`
     - echo "=============== 登录Harbor  ==============="
