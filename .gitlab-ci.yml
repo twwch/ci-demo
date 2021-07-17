@@ -23,7 +23,7 @@ make_jar:
   image: maven:3.6.3-jdk-8
   stage: package
   tags:
-    - k8s
+    - SHARE_MAVEN_JDK
   script:
     - echo "=============== 开始编译源码，在target目录生成jar文件 ==============="
     - mvn $MAVEN_CLI_OPTS clean compile package -Dmaven.test.skip=true
@@ -33,6 +33,8 @@ make_jar:
 make_image:
   image: docker:latest
   stage: build
+  tags:
+    - SHARE_MAVEN_JDK
   script:
     - echo "从缓存中恢复的target文件夹" `ls target/`
     - echo "=============== 登录Harbor  ==============="
