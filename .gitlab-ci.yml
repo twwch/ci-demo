@@ -3,7 +3,9 @@ image: maven:3.6.3-jdk-8
 variables:
 #  MAVEN_CLI_OPTS: "-s /opt/apache-maven-3.8.1/conf/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=/root/.m2/repository"
-
+  DOCKER_HOST: tcp://192.168.209.154:2375/
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ''
 # 定义缓存
 # 如果gitlab runner是shell或者docker，此缓存功能没有问题
 # 如果是k8s环境，要确保已经设置了分布式文件服务作为缓存
