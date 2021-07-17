@@ -31,7 +31,7 @@ make_jar:
 
 # 生产镜像的job
 make_image:
-  image: docker:latest
+  image: docker:18.09
   stage: build
   tags:
     - SHARE_MAVEN_JDK
