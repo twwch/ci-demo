@@ -37,12 +37,12 @@ make_image:
   stage: build
   tags:
     - SHARE_MAVEN_JDK
-  services:
-    - name: docker:18.09
-      command:
-        [
-          '--insecure-registry=192.168.209.154:80'
-        ]
+  before_script:
+    - mkdir -p /etc/docker
+    - touch /etc/docker/daemon.json
+    - echo '{ "insecure-registries":["192.168.209.154:80"] }' > /etc/docker/daemon.json
+    - systemctl daemon-reload
+    - systemctl restart docker
   script:
     - echo "从缓存中恢复的target文件夹" `ls target/`
     - echo "=============== 登录Harbor  ==============="
