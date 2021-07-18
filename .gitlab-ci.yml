@@ -38,7 +38,7 @@ make_image:
   tags:
     - SHARE_MAVEN_JDK
   services:
-    - name: docker:dind
+    - name: docker:18.09
       command:
         [
           '--insecure-registry=192.168.209.154:80'
