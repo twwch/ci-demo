@@ -2,7 +2,7 @@ image: docker:latest  #1
 
 variables:  #2
   DOCKER_DRIVER: overlay2
-#  DOCKER_HOST: tcp://192.168.209.154:80  # docker host，本地可不写,
+  DOCKER_HOST: tcp://192.168.209.154:2375/
   TAG: root/hello-spring:v0.1  # 生成的镜像名称
 cache:  #3
   paths:
