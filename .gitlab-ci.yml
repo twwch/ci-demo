@@ -14,11 +14,7 @@ cache:
   paths:
     - .m2/repository/
     - target/*.jar
-services:
-  - name: docker:dind
-    command: [
-      '--insecure-registry=192.168.209.154:80'
-    ]
+
 # 本次构建的阶段：build package
 stages:
   - package
@@ -37,7 +33,7 @@ make_jar:
 
 # 生产镜像的job
 make_image:
-  image: docker:dind
+  image: docker
   stage: build
   tags:
     - SHARE_MAVEN_JDK
@@ -45,9 +41,9 @@ make_image:
   script:
     - echo "从缓存中恢复的target文件夹" `ls target/`
     - echo "=============== 登录Harbor  ==============="
-    - docker login 192.168.209.154:80 -u admin -p Harbor12345 $CI_REGISTRY
     - echo "=============== 打包Docker镜像 ： " gitlabci-java-demo:$CI_COMMIT_SHORT_SHA "==============="
     - docker build -t 192.168.209.154:80/common/gitlabci-java-demo:$CI_COMMIT_SHORT_SHA .
+    - docker login 192.168.209.154:80 -u admin -p Harbor12345
     - echo "=============== 推送到镜像仓库  ==============="
     - docker push 192.168.209.154:80/common/gitlabci-java-demo:$CI_COMMIT_SHORT_SHA
     - echo "=============== 登出  ==============="
