@@ -41,8 +41,8 @@ make_image:
     - mkdir -p /etc/docker
     - touch /etc/docker/daemon.json
     - echo '{ "insecure-registries":["192.168.209.154:80"] }' > /etc/docker/daemon.json
-    - systemctl daemon-reload
-    - systemctl restart docker
+#    - systemctl daemon-reload
+#    - systemctl restart docker
   script:
     - echo "从缓存中恢复的target文件夹" `ls target/`
     - echo "=============== 登录Harbor  ==============="
