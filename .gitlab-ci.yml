@@ -27,6 +27,7 @@ build-master:  #7
     - SHARE_MAVEN_JDK
   stage: deploy
   script:
+    - docker login 192.168.209.154:80 -u admin -p Harbor12345
     - docker build -t $TAG . # 根据Dockerfile文件构建镜像
     - docker rm -f test || true # 删除测试容器
     - docker run -d --name test -p 5000:5000 $TAG # 运行容器，$TAG是开头设置的变量，表示的是镜像
