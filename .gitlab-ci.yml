@@ -39,7 +39,7 @@ make_image:
     - SHARE_MAVEN_JDK
   script:
     - echo "从缓存中恢复的target文件夹" `ls target/`
-    - echo '{ "insecure-registries":["192.168.209.154:80"] }' > /etc/docker/daemon.json
+    - sudo echo '{ "insecure-registries":["192.168.209.154:80"] }' > /etc/docker/daemon.json
     - systemctl daemon-reload
     - systemctl restart docker
     - echo "=============== 登录Harbor  ==============="
