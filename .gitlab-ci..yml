@@ -6,6 +6,7 @@ variables:
   DOCKER_HOST: tcp://192.168.209.154:2375/
   DOCKER_DRIVER: overlay2
   DOCKER_TLS_CERTDIR: ''
+  DOCKER_REGISTRY: 192.168.209.154:80
 # 定义缓存
 # 如果gitlab runner是shell或者docker，此缓存功能没有问题
 # 如果是k8s环境，要确保已经设置了分布式文件服务作为缓存
@@ -42,7 +43,7 @@ make_image:
     - echo "从缓存中恢复的target文件夹" `ls target/`
     - echo "=============== 登录Harbor  ==============="
     - echo "=============== 打包Docker镜像 ： " gitlabci-java-demo:$CI_COMMIT_SHORT_SHA "==============="
-    - docker login 192.168.209.154:80 -u admin -p Harbor12345
+    - docker login 192.168.209.154:80 -u admin -p Harbor12345 $DOCKER_REGISTRY
     - docker build -t 192.168.209.154:80/common/gitlabci-java-demo:$CI_COMMIT_SHORT_SHA .
     - echo "=============== 推送到镜像仓库  ==============="
     - docker push 192.168.209.154:80/common/gitlabci-java-demo:$CI_COMMIT_SHORT_SHA
