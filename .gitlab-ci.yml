@@ -51,3 +51,4 @@ make_image:
     - sudo docker logout
     - echo "清理掉本次构建的jar文件"
     - rm -rf target/*.jar
+
