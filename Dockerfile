@@ -12,9 +12,4 @@ RUN java -Djarmode=layertools -jar application.jar extract
 # 正式构建镜像
 FROM openjdk:8u212-jdk-stretch
 WORKDIR application
-# 前一阶段从jar中提取除了多个文件，这里分别执行COPY命令复制到镜像空间中，每次COPY都是一个layer
-COPY --from=builder application/dependencies/ ./
-COPY --from=builder application/spring-boot-loader/ ./
-COPY --from=builder application/snapshot-dependencies/ ./
-COPY --from=builder application/application/ ./
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
