@@ -4,6 +4,7 @@ variables:
 #  MAVEN_CLI_OPTS: "-s /opt/apache-maven-3.8.1/conf/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=/root/.m2/repository"
   DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://127.0.0.1:2375/
   DOCKER_TLS_CERTDIR: ''
   DOCKER_REGISTRY: registry.cn-hangzhou.aliyuncs.com
 # 定义缓存
