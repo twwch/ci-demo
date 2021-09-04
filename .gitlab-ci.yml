@@ -43,9 +43,9 @@ make_image:
     - echo "=============== 登录Harbor  ==============="
     - echo "=============== 打包Docker镜像 ： " gitlabci-java-demo:$CI_COMMIT_SHORT_SHA "==============="
     - docker login -u chtw2329 -p 1728aceAB7@chtw $DOCKER_REGISTRY
-    - docker build -t registry.cn-hangzhou.aliyuncs.com/chtw/gitlabci-java-demo:$CI_COMMIT_SHORT_SHA .
+    - docker build -t registry.cn-hangzhou.aliyuncs.com/chtw/gitlabci-java-demo:$CI_COMMIT_REF_NAME .
     - echo "=============== 推送到镜像仓库  ==============="
-    - docker push registry.cn-hangzhou.aliyuncs.com/chtw/gitlabci-java-demo:$CI_COMMIT_SHORT_SHA
+    - docker push registry.cn-hangzhou.aliyuncs.com/chtw/gitlabci-java-demo:$CI_COMMIT_REF_NAME
     - echo "=============== 登出  ==============="
     - docker logout
     - echo "清理掉本次构建的jar文件"
